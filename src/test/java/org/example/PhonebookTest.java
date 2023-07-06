@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
-import java.util.stream.Stream;
+
 
 
 class PhonebookTest {
@@ -46,6 +46,19 @@ class PhonebookTest {
                 .orElse(null));
         phonebook.add("ira", "11223344");
         Assertions.assertEquals(search, phonebook.findByNumber("11223344"));
+    }
+
+    @Test
+    void findByName() {
+        HashMap<String, String> contactList = new HashMap<>();
+        contactList.put("Petya", "123456");
+        contactList.put("Masha", "654321");
+        contactList.put("ira", "11223344");
+        contactList.put("ula", "22113344");
+        String search = contactList.keySet().stream().filter(user -> user.equals("ira")).findFirst().orElse(null);
+
+        Assertions.assertEquals(search,phonebook.findByName("ira"));
+
     }
 }
 
