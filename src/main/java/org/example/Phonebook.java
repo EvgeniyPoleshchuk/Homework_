@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.HashMap;
+import java.util.TreeMap;
 
 public class Phonebook {
     HashMap<String,String> contactList = new HashMap<>();
@@ -25,5 +26,8 @@ public class Phonebook {
                 .findFirst()
                 .orElse(null);
     }
-    
+    public String printAllNames(){
+        TreeMap<String,String> sortedMap = new TreeMap<>(contactList);
+        return sortedMap.keySet().toString();
+    }
 }

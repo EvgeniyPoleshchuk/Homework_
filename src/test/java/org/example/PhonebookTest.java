@@ -4,8 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Comparator;
 import java.util.HashMap;
-
+import java.util.TreeMap;
 
 
 class PhonebookTest {
@@ -63,6 +64,21 @@ class PhonebookTest {
         phonebook.add("ira", "11223344");
         Assertions.assertEquals(search,phonebook.findByName("ira"));
 
+    }
+
+    @Test
+    public void printAllNames() {
+        HashMap<String, String> contactList = new HashMap<>();
+        contactList.put("Petya", "123456");
+        contactList.put("Masha", "654321");
+        contactList.put("Bra", "11223344");
+        contactList.put("ula", "22113344");
+        TreeMap<String,String> sort = new TreeMap<>(contactList);
+        String nameList = sort.keySet().toString();
+        phonebook.add("Bra", "11223344");
+        phonebook.add("ula", "22113344");
+
+        Assertions.assertEquals(nameList,phonebook.printAllNames());
     }
 }
 
