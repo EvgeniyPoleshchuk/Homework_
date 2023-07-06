@@ -19,6 +19,10 @@ public class Phonebook {
     }
 
     public String findByName(String name){
-        return null;
+        return contactList
+                .keySet().stream()
+                .filter(user -> user.equals(name))
+                .findFirst()
+                .orElse(null);
     }
 }

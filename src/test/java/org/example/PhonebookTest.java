@@ -55,8 +55,12 @@ class PhonebookTest {
         contactList.put("Masha", "654321");
         contactList.put("ira", "11223344");
         contactList.put("ula", "22113344");
-        String search = contactList.keySet().stream().filter(user -> user.equals("ira")).findFirst().orElse(null);
-
+        String search = contactList
+                .keySet().stream()
+                .filter(user -> user.equals("ira"))
+                .findFirst()
+                .orElse(null);
+        phonebook.add("ira", "11223344");
         Assertions.assertEquals(search,phonebook.findByName("ira"));
 
     }
