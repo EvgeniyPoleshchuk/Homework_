@@ -4,14 +4,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.TreeMap;
 
 
 class PhonebookTest {
     Phonebook phonebook = new Phonebook();
-    HashMap<String,String> contactList = new HashMap<>();
+    HashMap<String, String> contactList = new HashMap<>();
 
     @BeforeEach
     public void createContact() {
@@ -20,13 +19,15 @@ class PhonebookTest {
         phonebook.add("ira", "11223344");
         phonebook.add("ula", "22113344");
     }
+
     @BeforeEach
-    public void putInHash(){
+    public void putInHash() {
         contactList.put("Petya", "123456");
         contactList.put("Masha", "654321");
         contactList.put("ira", "11223344");
         contactList.put("ula", "22113344");
     }
+
     @Test
     public void addTest() {
         String name = "Petya";
@@ -36,6 +37,7 @@ class PhonebookTest {
         }
         Assertions.assertEquals(contactList.size(), phonebook.add("Petya", "23123123"));
     }
+
     @Test
     public void findByNumberTest() {
         String search = String.valueOf(contactList.entrySet()
@@ -46,6 +48,7 @@ class PhonebookTest {
         phonebook.add("ira", "11223344");
         Assertions.assertEquals(search, phonebook.findByNumber("11223344"));
     }
+
     @Test
     void findByName() {
         String search = contactList
@@ -54,14 +57,14 @@ class PhonebookTest {
                 .findFirst()
                 .orElse(null);
         phonebook.add("ira", "11223344");
-        Assertions.assertEquals(search,phonebook.findByName("ira"));
+        Assertions.assertEquals(search, phonebook.findByName("ira"));
     }
 
     @Test
     public void printAllNames() {
-        TreeMap<String,String> sort = new TreeMap<>(contactList);
+        TreeMap<String, String> sort = new TreeMap<>(contactList);
         String nameList = sort.keySet().toString();
-        Assertions.assertEquals(nameList,phonebook.printAllNames());
+        Assertions.assertEquals(nameList, phonebook.printAllNames());
     }
 }
 
