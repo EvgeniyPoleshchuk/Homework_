@@ -11,6 +11,10 @@ public class Phonebook {
         return contactList.size();
     }
     public String findByNumber(String phoneNumber){
-        return null;
+        return String.valueOf(contactList.entrySet()
+                .stream()
+                .filter(user -> user.getValue().equals("11223344"))
+                .findFirst()
+                .orElse(null));
     }
 }

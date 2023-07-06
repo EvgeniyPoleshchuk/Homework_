@@ -15,6 +15,7 @@ class PhonebookTest {
     public void createContact() {
         phonebook.add("Petya", "232323");
         phonebook.add("Masha", "232323232");
+
     }
 
     @Test
@@ -38,13 +39,13 @@ class PhonebookTest {
         contactList.put("Masha", "654321");
         contactList.put("ira", "11223344");
         contactList.put("ula", "22113344");
-        String se = "11223344";
-       String search = String.valueOf(contactList.entrySet()
-               .stream()
-               .filter(user -> user.getValue().equals("11223344"))
-               .findFirst()
-               .orElse(null));
-        Assertions.assertEquals(search,phonebook.findByNumber("11223344"));
+        String search = String.valueOf(contactList.entrySet()
+                .stream()
+                .filter(user -> user.getValue().equals("11223344"))
+                .findFirst()
+                .orElse(null));
+        phonebook.add("ira", "11223344");
+        Assertions.assertEquals(search, phonebook.findByNumber("11223344"));
     }
 }
 
